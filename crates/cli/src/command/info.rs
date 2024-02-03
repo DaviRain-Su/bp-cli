@@ -11,8 +11,8 @@ impl Info {
 
         let bpx_client = BpxClient::init(config.base_url, &config.api_key, &config.api_secret)?;
 
-        // let asserts = bpx_client.get_assets().await?;
-        // println!("Asserts: {:#?}", asserts);
+        let asserts = bpx_client.get_assets().await?;
+        println!("Asserts: {:#?}", asserts);
         //
         // let market = bpx_client.get_markets().await?;
         // println!("Market: {:#?}", market);
@@ -42,11 +42,11 @@ impl Info {
         // .await?;
         // println!("HistoricalTrade: {:#?}", historical_trade);
 
-        let open_order = bpx_client.get_open_orders(Some("SOL_USDC")).await?;
-        println!("OpenOrder: {:#?}", open_order);
+        // let open_order = bpx_client.get_open_orders(Some("SOL_USDC")).await?;
+        // println!("OpenOrder: {:#?}", open_order);
 
-        let depth = bpx_client.get_order_book_depth("JUP_USDC").await?;
-        println!("Depth: {:#?}", depth);
+        // let depth = bpx_client.get_order_book_depth("JUP_USDC").await?;
+        // println!("Depth: {:#?}", depth);
 
         // let status = bpx_client.status().await?;
         // println!("Status: {:#?}", status);
