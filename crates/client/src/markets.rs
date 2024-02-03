@@ -24,20 +24,20 @@ impl BpxClient {
         log::info!("url: {:?}", url);
         let res = self.get(url).await?;
         // log::info!("res: {:?}", res);
-        let text = res.text().await?;
-        log::info!("text: {:?}", text);
-        // res.json().await.map_err(Into::into)
-        todo!()
+        // let text = res.text().await?;
+        // log::info!("text: {:?}", text);
+        res.json().await.map_err(Into::into)
+        // todo!()
     }
 
     pub async fn get_order_book_depth(&self, symbol: &str) -> Result<OrderBookDepth> {
         let url = format!("{}/api/v1/depth&symbol={}", self.base_url, symbol);
         log::info!("url: {:?}", url);
         let res = self.get(url).await?;
-        let text = res.text().await?;
-        log::info!("text: {:?}", text);
-        // res.json().await.map_err(Into::into)
-        todo!()
+        // let text = res.text().await?;
+        // log::info!("text: {:?}", text);
+        res.json().await.map_err(Into::into)
+        // todo!()
     }
 
     pub async fn get_k_lines(

@@ -42,20 +42,20 @@ impl Info {
         // .await?;
         // println!("HistoricalTrade: {:#?}", historical_trade);
 
-        // let open_order = bpx_client.get_open_orders(Some("SOL_USDC")).await?;
-        // println!("OpenOrder: {:#?}", open_order);
-        //
-        // let depth = bpx_client.get_order_book_depth("JUP_USDC").await?;
-        // println!("Depth: {:#?}", depth);
+        let open_order = bpx_client.get_open_orders(Some("SOL_USDC")).await?;
+        println!("OpenOrder: {:#?}", open_order);
 
-        let status = bpx_client.status().await?;
-        println!("Status: {:#?}", status);
+        let depth = bpx_client.get_order_book_depth("JUP_USDC").await?;
+        println!("Depth: {:#?}", depth);
 
-        let ping = bpx_client.ping().await?;
-        println!("Ping: {:#?}", ping);
+        // let status = bpx_client.status().await?;
+        // println!("Status: {:#?}", status);
 
-        let time = bpx_client.time().await?;
-        println!("Time: {:#?}", time);
+        // let ping = bpx_client.ping().await?;
+        // println!("Ping: {:#?}", ping);
+
+        // let time = bpx_client.time().await?;
+        // println!("Time: {:#?}", time);
         Ok(())
     }
 }
