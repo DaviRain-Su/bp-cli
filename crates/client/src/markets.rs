@@ -19,25 +19,21 @@ impl BpxClient {
         res.json().await.map_err(Into::into)
     }
 
-    pub async fn get_ticker(&self, symbol: &str) -> Result<Vec<Ticker>> {
-        let url = format!("{}/api/v1/ticker&symbol={}", self.base_url, symbol);
+    /// get symbol ticker
+    pub async fn get_ticker(&self, symbol: &str) -> Result<Ticker> {
+        let url = format!("{}/api/v1/ticker?symbol={}", self.base_url, symbol);
         log::info!("url: {:?}", url);
         let res = self.get(url).await?;
-        // log::info!("res: {:?}", res);
-        // let text = res.text().await?;
-        // log::info!("text: {:?}", text);
+        log::info!("res: {:#?}", res);
         res.json().await.map_err(Into::into)
-        // todo!()
     }
 
+    /// get symbol order book depth
     pub async fn get_order_book_depth(&self, symbol: &str) -> Result<OrderBookDepth> {
-        let url = format!("{}/api/v1/depth&symbol={}", self.base_url, symbol);
+        let url = format!("{}/api/v1/depth?symbol={}", self.base_url, symbol);
         log::info!("url: {:?}", url);
         let res = self.get(url).await?;
-        let text = res.text().await?;
-        println!("text: {:?}", text);
-        // res.json().await.map_err(Into::into)
-        todo!()
+        res.json().await.map_err(Into::into)
     }
 
     pub async fn get_k_lines(
