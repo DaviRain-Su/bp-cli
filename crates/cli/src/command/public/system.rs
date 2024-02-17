@@ -7,6 +7,18 @@ pub struct System {}
 
 impl System {
     pub async fn run(&self) -> anyhow::Result<()> {
-        todo!()
+        let config = get_config()?;
+        let bpx_client = BpxClient::init(config.base_url, &config.api_key, &config.api_secret)?;
+
+        let v = bpx_client.status().await?;
+        println!("status: {:?}", v);
+
+        let v = bpx_client.ping().await?;
+        println!("ping: {:?}", v);
+
+        let v = bpx_client.time().await?;
+        println!("time: {:?}", v);
+
+        Ok(())
     }
 }
