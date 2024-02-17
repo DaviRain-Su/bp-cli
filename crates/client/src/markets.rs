@@ -14,7 +14,6 @@ impl BpxClient {
     /// Get a list of all available markets.
     pub async fn get_markets(&self) -> Result<Vec<Market>> {
         let url = format!("{}/api/v1/markets", self.base_url);
-        log::info!("url: {:?}", url);
         let res = self.get(url).await?;
         res.json().await.map_err(Into::into)
     }
@@ -22,16 +21,13 @@ impl BpxClient {
     /// get symbol ticker
     pub async fn get_ticker(&self, symbol: &str) -> Result<Ticker> {
         let url = format!("{}/api/v1/ticker?symbol={}", self.base_url, symbol);
-        log::info!("url: {:?}", url);
         let res = self.get(url).await?;
-        log::info!("res: {:#?}", res);
         res.json().await.map_err(Into::into)
     }
 
     /// get symbol order book depth
     pub async fn get_order_book_depth(&self, symbol: &str) -> Result<OrderBookDepth> {
         let url = format!("{}/api/v1/depth?symbol={}", self.base_url, symbol);
-        log::info!("url: {:?}", url);
         let res = self.get(url).await?;
         res.json().await.map_err(Into::into)
     }
