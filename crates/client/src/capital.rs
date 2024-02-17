@@ -16,6 +16,7 @@ impl BpxClient {
         res.json().await.map_err(Into::into)
     }
 
+    /// Get deposits
     pub async fn get_deposits(
         &self,
         limit: Option<i64>,
@@ -31,6 +32,7 @@ impl BpxClient {
         res.json().await.map_err(Into::into)
     }
 
+    /// Get deposit address
     pub async fn get_deposit_address(&self, blockchain: Blockchain) -> Result<DepositAddress> {
         let url = format!(
             "{}/wapi/v1/capital/deposit/address?blockchain={}",
@@ -40,6 +42,7 @@ impl BpxClient {
         res.json().await.map_err(Into::into)
     }
 
+    /// get withdrawals
     pub async fn get_withdrawals(
         &self,
         limit: Option<i64>,
@@ -55,6 +58,7 @@ impl BpxClient {
         res.json().await.map_err(Into::into)
     }
 
+    /// request withdrawal
     pub async fn request_withdrawal(&self, payload: RequestWithdrawalPayload) -> Result<()> {
         let endpoint = format!("{}/wapi/v1/capital/withdrawals", self.base_url);
         self.post(endpoint, payload).await.map(|_| ())
