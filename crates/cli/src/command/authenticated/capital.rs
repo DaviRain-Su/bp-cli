@@ -13,16 +13,16 @@ impl Captial {
         let balance = bpx_client.get_balances().await?;
         println!("balance is {:#?}", balance);
 
-        let result = bpx_client.get_deposits(None, None).await?;
-        println!("deposit result: {:#?}", result);
+        // let result = bpx_client.get_deposits(None, None).await?;
+        // println!("deposit result: {:#?}", result);
 
-        let result = bpx_client
-            .get_deposit_address(bpx_api_client::types::Blockchain::Solana)
-            .await?;
-        println!("deposit result: {:#?}", result);
+        // let result = bpx_client
+        //     .get_deposit_address(bpx_api_client::types::Blockchain::Solana)
+        //     .await?;
+        // println!("deposit result: {:#?}", result);
 
-        let result = bpx_client.get_withdrawals(None, None).await?;
-        println!("withdrawals result: {:#?}", result);
+        // let result = bpx_client.get_withdrawals(None, None).await?;
+        // println!("withdrawals result: {:#?}", result);
 
         // todo
         // request_withdrawal
